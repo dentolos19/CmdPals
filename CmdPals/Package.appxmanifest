@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package
+        xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+        xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+        xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+        xmlns:com="http://schemas.microsoft.com/appx/manifest/com/windows10"
+        xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+        IgnorableNamespaces="uap uap3 rescap">
+
+    <!-- When you're ready to publish your extension, you'll need to change the Publisher= to match your own identity -->
+    <Identity
+            Name="CmdPals"
+            Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US"
+            Version="1.0.0.0"/>
+
+    <Properties>
+        <DisplayName>CmdPals</DisplayName>
+        <PublisherDisplayName>Dennise Catolos</PublisherDisplayName>
+        <Logo>Assets\StoreLogo.png</Logo>
+    </Properties>
+
+    <Dependencies>
+        <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.19041.0" MaxVersionTested="10.0.19041.0"/>
+        <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.19041.0" MaxVersionTested="10.0.19041.0"/>
+    </Dependencies>
+
+    <Resources>
+        <Resource Language="x-generate"/>
+    </Resources>
+
+    <Applications>
+        <Application
+                Id="App"
+                Executable="$targetnametoken$.exe"
+                EntryPoint="$targetentrypoint$">
+            <uap:VisualElements
+                    DisplayName="CmdPals"
+                    Description="CmdPals"
+                    BackgroundColor="transparent"
+                    Square150x150Logo="Assets\Square150x150Logo.png"
+                    Square44x44Logo="Assets\Square44x44Logo.png">
+                <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
+                <uap:SplashScreen Image="Assets\SplashScreen.png"/>
+            </uap:VisualElements>
+            <Extensions>
+                <com:Extension Category="windows.comServer">
+                    <com:ComServer>
+                        <com:ExeServer
+                                Executable="CmdPals.exe"
+                                Arguments="-RegisterProcessAsComServer"
+                                DisplayName="CmdPals">
+                            <com:Class Id="981b06af-d575-43e3-b1b7-e47aab1fced7" DisplayName="CmdPals"/>
+                        </com:ExeServer>
+                    </com:ComServer>
+                </com:Extension>
+                <uap3:Extension Category="windows.appExtension">
+                    <uap3:AppExtension
+                            Name="com.microsoft.commandpalette"
+                            Id="ID"
+                            PublicFolder="Public"
+                            DisplayName="CmdPals"
+                            Description="CmdPals">
+                        <uap3:Properties>
+                            <CmdPalProvider>
+                                <Activation>
+                                    <CreateInstance ClassId="981b06af-d575-43e3-b1b7-e47aab1fced7"/>
+                                </Activation>
+                                <SupportedInterfaces>
+                                    <Commands/>
+                                </SupportedInterfaces>
+                            </CmdPalProvider>
+                        </uap3:Properties>
+                    </uap3:AppExtension>
+                </uap3:Extension>
+            </Extensions>
+        </Application>
+    </Applications>
+
+    <Capabilities>
+        <Capability Name="internetClient"/>
+        <rescap:Capability Name="runFullTrust"/>
+    </Capabilities>
+
+</Package>

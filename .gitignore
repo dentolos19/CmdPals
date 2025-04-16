@@ -1,0 +1,18 @@
+# IDE configurations
+.vs/
+.idea/
+
+# Output files
+bin/
+obj/
+
+# User-specific files
+.env*
+!.env*.template
+*.user
+*.suo
+
+# Miscellaneous files
+.DS_Store
+Desktop.ini
+Thumbs.db
