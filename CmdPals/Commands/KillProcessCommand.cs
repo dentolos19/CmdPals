@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using Microsoft.CommandPalette.Extensions;
 using Microsoft.CommandPalette.Extensions.Toolkit;
 
@@ -19,6 +19,6 @@ public sealed partial class KillProcessCommand : InvokableCommand
     public override ICommandResult Invoke()
     {
         _process.Kill();
-        return CommandResult.Hide();
+        return CommandResult.GoHome();
     }
 }
