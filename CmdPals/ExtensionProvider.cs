@@ -10,11 +10,11 @@ public sealed partial class ExtensionProvider : CommandProvider
     public ExtensionProvider()
     {
         DisplayName = "CmdPals";
-        Icon = IconHelpers.FromRelativePath("Assets\\StoreLogo.png");
+        Icon = IconHelpers.FromRelativePath("Assets\\Palette.png");
 
         _commands =
         [
-            new CommandItem(new Extensions.ProcessKiller()) { Title = "Kill Process" },
+            new CommandItem(new Extensions.ProcessKiller()),
         ];
     }
 

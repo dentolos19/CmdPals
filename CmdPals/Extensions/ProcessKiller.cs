@@ -11,9 +11,9 @@ internal sealed partial class ProcessKiller : ListPage
 {
     public ProcessKiller()
     {
-        Icon = IconHelpers.FromRelativePath("Assets\\StoreLogo.png");
+        Icon = IconHelpers.FromRelativePath("Assets\\Bug.png");
         Title = "Process Killer";
-        Name = "Process Killer";
+        Name = "Kill Process";
     }
 
     public override IListItem[] GetItems()
@@ -30,7 +30,7 @@ internal sealed partial class ProcessKiller : ListPage
             // Add item corresponding to the process with a kill command.
             var item = new ListItem(new KillProcessCommand(process))
             {
-                Icon = IconHelpers.FromRelativePath("Assets\\StoreLogo.png"),
+                Icon = IconHelpers.FromRelativePath("Assets\\Process.png"),
                 Title = process.ProcessName,
                 Subtitle = process.MainWindowTitle
             };
