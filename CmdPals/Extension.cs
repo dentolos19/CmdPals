@@ -9,12 +9,11 @@ namespace CmdPals;
 public sealed partial class Extension : IExtension, IDisposable
 {
     private readonly ManualResetEvent _disposeEvent;
-
     private readonly ExtensionProvider _provider = new();
 
     public Extension(ManualResetEvent disposeEvent)
     {
-        this._disposeEvent = disposeEvent;
+        _disposeEvent = disposeEvent;
     }
 
     public object? GetProvider(ProviderType providerType)
